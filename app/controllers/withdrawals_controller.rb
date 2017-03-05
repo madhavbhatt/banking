@@ -8,7 +8,8 @@ class WithdrawalsController < ApplicationController
     if current_user.admin?
         @withdrawals = Withdrawal.all
     else
-        @withdrawals = Withdrawal.find_by_sql("SELECT * FROM withdrawals WHERE user_id IN (SELECT acct_number FROM accounts WHERE owner = current_user)".gsub("current_user", current_user.id.to_s))
+        @withdrawals = Withdrawal.select{|x| x.user_id == current_user.id }
+		#Withdrawal.find_by_sql("SELECT * FROM withdrawals WHERE user_id IN (SELECT acct_number FROM accounts WHERE owner = current_user)".gsub("current_user", current_user.id.to_s))
     end
   end
 
