@@ -30,6 +30,8 @@ class BorrowsController < ApplicationController
   # POST /borrows
   # POST /borrows.json
   def create
+  
+	@borrow = Borrow.request(borrow_params)
 	
 	if @borrow.nil?
       flash[:danger] = "Invalid Borrow Request (Nil)"
@@ -42,8 +44,6 @@ class BorrowsController < ApplicationController
 		redirect_to :back
 		return
 	end
-	
-	@borrow = Borrow.request(borrow_params)
 	
 	if @borrow.save
 		flash[:success] = "Borrow Request Submitted"
