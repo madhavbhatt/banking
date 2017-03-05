@@ -33,3 +33,5 @@ Madhav Bhatt, Chris Brown, Ryan Mee
 4. Click on the account number for the new account just created
 5. Click the "Activate Account" button
 6. Account will be activated
+
+# dependency.sh contains packages that gems depend on for debian distributions 
